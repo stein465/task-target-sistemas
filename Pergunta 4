@@ -1,0 +1,37 @@
+Pergunta 4) 
+
+Tabela Cliente:
+
+CREATE TABLE cliente (
+    id_cliente INT PRIMARY KEY,
+    razao_social VARCHAR(255) NOT NULL,
+    id_estado INT,
+    FOREIGN KEY (id_estado) REFERENCES estado(id_estado)
+);
+
+
+Tabela Telefone:
+
+CREATE TABLE telefone (
+    id_telefone INT PRIMARY KEY,
+    numero VARCHAR(20) NOT NULL,
+    id_tipo_telefone INT,
+    id_cliente INT,
+    FOREIGN KEY (id_tipo_telefone) REFERENCES tipo_telefone(id_tipo_telefone),
+    FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
+);
+
+Tabla tipo_ tepelefone:
+
+CREATE TABLE tipo_telefone (
+    id_tipo_telefone INT PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL
+);
+
+Tabela Estado:
+
+CREATE TABLE estado (
+    id_estado INT PRIMARY KEY,
+    nome_estado VARCHAR(100) NOT NULL,
+    sigla_estado VARCHAR(2) NOT NULL
+);

@@ -1,6 +1,6 @@
-Pergunta 4) 
+##Pergunta 4) 
 
-Tabela Cliente:
+##Tabela Cliente:
 
 CREATE TABLE cliente (
     id_cliente INT PRIMARY KEY,
@@ -10,7 +10,7 @@ CREATE TABLE cliente (
 );
 
 
-Tabela Telefone:
+##Tabela Telefone:
 
 CREATE TABLE telefone (
     id_telefone INT PRIMARY KEY,
@@ -21,17 +21,28 @@ CREATE TABLE telefone (
     FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 );
 
-Tabla tipo_ tepelefone:
+##Tabla tipo_ tepelefone:
 
 CREATE TABLE tipo_telefone (
     id_tipo_telefone INT PRIMARY KEY,
     descricao VARCHAR(50) NOT NULL
 );
 
-Tabela Estado:
+##Tabela Estado:
 
 CREATE TABLE estado (
     id_estado INT PRIMARY KEY,
     nome_estado VARCHAR(100) NOT NULL,
     sigla_estado VARCHAR(2) NOT NULL
 );
+
+
+busca que traga o código, a razão social e o telefone de todos os clientes do estado de São Paulo (código “SP”):
+
+SELECT c.id_cliente, c.razao_social, t.numero AS telefone FROM cliente c
+JOIN 
+    telefone t ON c.id_cliente = t.id_cliente
+JOIN 
+    estado e ON c.id_estado = e.id_estado
+WHERE 
+    e.sigla_estado = 'SP';    
